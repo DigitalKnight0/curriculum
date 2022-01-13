@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Contributing Guide
 
 Thank you for expressing interest in contributing to our curriculum!
@@ -61,3 +62,8 @@ If you would like to propose a change that is not covered in an open issue, plea
 
 ## Need Help with Anything Here?
 Please let us know if you require any help doing any of the steps in this guide in our [Discord's contribution-suggestions channel](https://discordapp.com/channels/505093832157691914/540903304046182425).
+=======
+View our [wiki](https://github.com/TheOdinProject/theodinproject/wiki) for detailed guides on installing the app and how to contribute. 
+
+Looking to make an edit to the curriculum? [You probably want this contributing guide.](https://github.com/TheOdinProject/curriculum/blob/main/CONTRIBUTING.md)
+>>>>>>> upstream/main
