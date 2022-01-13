@@ -1,0 +1,82 @@
+<%= render 'shared/navbar_modal' %>
+
+<div class="navbar navbar-expand-md navbar-light">
+  <div class="navbar-brand">
+    <%= render 'shared/logo' %>
+  </div>
+
+  <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="modal" data-target="#navbar-supported-content" aria-controls="navbar-supported-content" aria-expanded="false" aria-label="toggle-navigation">
+    <span class="navbar-toggler-icon open"></span>
+    <span class="sr-only">Open navigation</span>
+  </button>
+
+  <% if user_signed_in? %>
+    <nav class="collapse navbar-collapse">
+      <!-- Full Width Navbar -->
+      <ul class="navbar-nav ml-auto hidden-md-down">
+        <li class="nav-item <%= active_class(path_path(current_user.path)) %>">
+          <%= link_to 'My Path', path_url(current_user.path), class: 'nav-link' %>
+        </li>
+
+        <li class="nav-item <%= active_class(paths_url) %>">
+          <%= link_to 'All Paths', paths_url, class: 'nav-link' %>
+        </li>
+
+        <li class="nav-item <%= active_class(chat_link) %>">
+          <%= link_to "Community", chat_link, class: 'nav-link', target: '_blank', rel: 'noreferrer' %>
+        </li>
+
+        <li class="nav-link">
+          <span class='divider'>
+          </span>
+        </li>
+
+        <li>
+          <%= link_to notifications_path, data: { test_id: 'navbar-notification-icon' } do %>
+            <div class="relative h-6 w-6 text-notification hover:text-notification-hover">
+              <% if unread_notifications?(current_user) %>
+                <span data-test-id="unread-notifications" class="absolute top-1 right-0.5 w-2 h-2 rounded-lg bg-new-notification"></span>
+              <% end %>
+              <%= inline_svg_tag 'icons/icon-notification.svg', aria: true, title: 'notifications link', desc: 'a link to the notifications page' %>
+            </div>
+          <% end %>
+        </li>
+
+        <%= render 'shared/user_dropdown' %>
+      </ul>
+  <% else %>
+    <nav class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item <%= active_class(paths_url) %>">
+          <%= link_to 'All Paths', paths_url, class: 'nav-link' %>
+        </li>
+
+         <li class="nav-item <%= active_class(chat_link) %>">
+          <%= link_to "Community", chat_link, class: 'nav-link', target: '_blank', rel: 'noreferrer' %>
+        </li>
+
+        <li class="nav-item <%= active_class(about_path) %>">
+          <%= link_to 'About', about_path, class: 'nav-link' %>
+        </li>
+
+        <li class="nav-item <%= active_class(faq_path) %>">
+          <%= link_to "FAQ", faq_path, class: 'nav-link' %>
+        </li>
+
+        <li class="nav-link">
+          <span class='divider'>
+          </span>
+        </li>
+
+        <li class="nav-item <%= active_class(sign_up_path) %>">
+          <%= link_to 'Sign Up', sign_up_path, class: 'nav-link', data: {test_id: 'sign_up'} %>
+        </li>
+        <li class="nav-item <%= active_class(login_path) %>">
+          <%= link_to 'Log In', login_path, class: 'nav-link', data: { test_id: 'user-login-link' } %>
+        </li>
+      </ul>
+    </nav>
+  <% end %>
+    </ul>
+  </nav>
+</div>
